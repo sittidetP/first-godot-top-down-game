@@ -6,7 +6,13 @@ extends CharacterBody2D
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
-		print("shoot")
+		var mouse_position := get_global_mouse_position()
+		var shooted_bullet := bullet.instantiate()
+		shooted_bullet.position = global_position
+#		shooted_bullet.rotation = (mouse_position - position).angle()
+		get_parent().add_child(shooted_bullet)
+		print(mouse_position)
+		
 
 func _physics_process(delta: float) -> void:
 	handle_move()

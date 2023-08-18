@@ -5,6 +5,7 @@ extends Area2D
 
 func _physics_process(delta: float) -> void:
 	position.x += (speed * delta)
+	rotation
 
 
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
