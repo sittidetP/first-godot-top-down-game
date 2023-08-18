@@ -9,9 +9,9 @@ func _process(delta: float) -> void:
 		var mouse_position := get_global_mouse_position()
 		var shooted_bullet := bullet.instantiate()
 		shooted_bullet.position = global_position
-#		shooted_bullet.rotation = (mouse_position - position).angle()
+		var bullet_rad := (mouse_position - global_position).angle()
+		shooted_bullet.rotate(bullet_rad)
 		get_parent().add_child(shooted_bullet)
-		print(mouse_position)
 		
 
 func _physics_process(delta: float) -> void:
