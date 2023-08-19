@@ -8,6 +8,8 @@
 radius = 64.195
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 10
+collision_mask = 4
 script = ExtResource("1_nnkyn")
 speed = 300.0
 bullet = ExtResource("2_frd2g")
