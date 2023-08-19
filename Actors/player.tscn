@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://boic3woxrd2l2"]
+[gd_scene load_steps=6 format=3 uid="uid://boic3woxrd2l2"]
 
 [ext_resource type="Texture2D" uid="uid://biwqaqgf2bj7s" path="res://Assets/circle.png" id="1_fjymd"]
 [ext_resource type="Script" path="res://Actors/player.gd" id="1_nnkyn"]
@@ -7,9 +7,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_d6vim"]
 radius = 64.195
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3e6vy"]
+radius = 63.0317
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 10
-collision_mask = 4
+collision_mask = 0
 script = ExtResource("1_nnkyn")
 speed = 300.0
 bullet = ExtResource("2_frd2g")
@@ -23,3 +26,13 @@ shape = SubResource("CircleShape2D_d6vim")
 [node name="FireTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+shape = SubResource("CircleShape2D_3e6vy")
+debug_color = Color(0.835294, 0.329412, 0.537255, 0.419608)
+
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_enemy_detector_area_entered"]

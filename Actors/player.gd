@@ -3,8 +3,9 @@ extends CharacterBody2D
 
 @export var speed := 200.0
 @export var bullet : PackedScene
-@onready var fire_timer: Timer = $FireTimer
 
+@onready var fire_timer: Timer = $FireTimer
+@onready var enemy_detector: Area2D = $EnemyDetector
 
 var fire_time : float
 
@@ -30,3 +31,7 @@ func fire():
 	shooted_bullet.rotate(bullet_rad)
 	get_parent().add_child(shooted_bullet)
 	fire_timer.start()
+
+
+func _on_enemy_detector_area_entered(area: Area2D) -> void:
+	queue_free()
