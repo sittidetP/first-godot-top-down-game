@@ -19,3 +19,7 @@ texture = ExtResource("1_fjymd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_d6vim")
+
+[node name="FireTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
