@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://7g12s5gajxty"]
+
+[ext_resource type="Script" path="res://Levels/main_level.gd" id="1_8lj1m"]
+[ext_resource type="PackedScene" uid="uid://cs1set45wyx48" path="res://Actors/enemy.tscn" id="2_bw8a1"]
+[ext_resource type="PackedScene" uid="uid://boic3woxrd2l2" path="res://Actors/player.tscn" id="3_wyxyn"]
+
+[sub_resource type="Curve2D" id="Curve2D_xye23"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -2, 0, 0, 0, 0, 1277, 1, 0, 0, 0, 0, 1278, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, -2)
+}
+point_count = 5
+
+[node name="MainLevel" type="Node"]
+script = ExtResource("1_8lj1m")
+enemy = ExtResource("2_bw8a1")
+
+[node name="EnemyPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_xye23")
+
+[node name="EnemySpawnPosition" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(0, -2)
+rotation = 0.00234925
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.8
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("3_wyxyn")]
+position = Vector2(639, 353)
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
