@@ -13,8 +13,11 @@ extends Node
 var score : int = 0
 var start_time : float = 0
 
+const SCORE_STR := "Score : %s"
+
 func _ready() -> void:
-	score_label.text = score_label.text % score
+	Events.score_up.connect(increas_score)
+	score_label.text = SCORE_STR % score
 	start_time = Time.get_ticks_msec()
 	randomize()
 
@@ -25,7 +28,9 @@ func _process(delta: float) -> void:
 		var current_time := (Time.get_ticks_msec() - start_time) / 1000
 		time_label.text = str(round(current_time))
 
-
+func increas_score() -> void:
+	score+=1
+	score_label.text = SCORE_STR % score
 
 func _on_mob_timer_timeout() -> void:
 	var player_position := Vector2.ZERO
