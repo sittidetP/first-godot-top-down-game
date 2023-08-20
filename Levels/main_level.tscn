@@ -17,7 +17,11 @@ enemy = ExtResource("2_bw8a1")
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xye23")
 
-[node name="EnemySpawnPosition" type="PathFollow2D" parent="EnemyPath"]
+[node name="EnemySpawnPosition1" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(0, -2)
+rotation = 0.00234925
+
+[node name="EnemySpawnPosition2" type="PathFollow2D" parent="EnemyPath"]
 position = Vector2(0, -2)
 rotation = 0.00234925
 
@@ -27,5 +31,22 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("3_wyxyn")]
 position = Vector2(639, 353)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 55.0
+offset_top = 40.0
+offset_right = 196.0
+offset_bottom = 83.0
+text = "Score : %s"
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1088.0
+offset_top = 40.0
+offset_right = 1229.0
+offset_bottom = 83.0
+text = "Time"
+horizontal_alignment = 2
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
