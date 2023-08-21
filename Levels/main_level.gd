@@ -1,6 +1,7 @@
 extends Node
 
 @export var enemy : PackedScene
+@export var player_scene : PackedScene
 
 @onready var score_label: Label = $UICanvasLayer/ScoreLabel
 @onready var time_label: Label = $UICanvasLayer/TimeLabel
@@ -19,6 +20,7 @@ const SCORE_STR := "Score : %s"
 
 func _ready() -> void:
 	Events.score_up.connect(increas_score)
+	Events.death.connect(game_over)
 	mob_timer.stop()
 	
 func start_game() -> void:
@@ -31,8 +33,7 @@ func start_game() -> void:
 
 func _process(delta: float) -> void:
 	if player == null:
-		mob_timer.stop()
-		game_name_canvas_layer.visible = true
+		game_over()
 	else:
 		var current_time := (Time.get_ticks_msec() - start_time) / 1000
 		time_label.text = str(round(current_time))
@@ -40,6 +41,10 @@ func _process(delta: float) -> void:
 func increas_score() -> void:
 	score+=1
 	score_label.text = SCORE_STR % score
+
+func game_over() -> void:
+	mob_timer.stop()
+	game_name_canvas_layer.visible = true
 
 func _on_mob_timer_timeout() -> void:
 	var player_position := Vector2.ZERO

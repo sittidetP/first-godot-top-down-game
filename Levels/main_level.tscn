@@ -18,6 +18,7 @@ outline_color = Color(0, 0, 0, 1)
 [node name="MainLevel" type="Node"]
 script = ExtResource("1_8lj1m")
 enemy = ExtResource("2_bw8a1")
+player_scene = ExtResource("3_wyxyn")
 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xye23")
