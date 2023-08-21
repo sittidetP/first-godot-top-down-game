@@ -25,7 +25,7 @@ texture = ExtResource("1_fjymd")
 shape = SubResource("CircleShape2D_d6vim")
 
 [node name="FireTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 one_shot = true
 
 [node name="EnemyDetector" type="Area2D" parent="."]

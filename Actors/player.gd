@@ -1,7 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-signal death
 
 @export var speed := 200.0
 @export var bullet : PackedScene
@@ -36,5 +35,5 @@ func fire():
 
 
 func _on_enemy_detector_area_entered(area: Area2D) -> void:
-	emit_signal("death")
+	Events.death.emit()
 	queue_free()

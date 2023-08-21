@@ -35,9 +35,6 @@ rotation = 0.00234925
 wait_time = 0.8
 autostart = true
 
-[node name="Player" parent="." instance=ExtResource("3_wyxyn")]
-position = Vector2(639, 353)
-
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
